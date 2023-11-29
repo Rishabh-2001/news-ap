@@ -1,6 +1,6 @@
 import "firebase/auth"
 import '@firebase/firestore'
-import firebase from 'firebase/app';
+import firebase, { getApp, getApps } from 'firebase/app';
 import 'firebase/firestore';
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
@@ -16,9 +16,9 @@ const clientCreds = {
   };
 
 
-  const app=  initializeApp(clientCreds);
-   const auth = getAuth(app);
-   var db = getFirestore(app)
+  const app=  !getApps().length ? initializeApp(clientCreds) : getApp() ;
+   const auth =    app.name && typeof window !== 'undefined' ? getAuth(app) : null;
+   const db =    app.name && typeof window !== 'undefined' ? getFirestore(app) : null;  
 
 export {app,auth, db}
 

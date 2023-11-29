@@ -21,7 +21,7 @@ const Profile = () => {
   }
   const liked=likedSavedData?.data?.liked || []
   const saved= likedSavedData?.data?.saved || []
-  console.log("Liked SAVED DATA", user, liked, saved , likedSavedData);
+  // console.log("Liked SAVED DATA", user, liked, saved , likedSavedData);
 
  
   useEffect(()=>{

@@ -17,9 +17,7 @@ export const Login = () => {
   const dispatch = useDispatch();
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
-  const ss = useSelector((st) => {
-    console.log("SSS:", st);
-  });
+
 
   const [formData, setFormData] = useState({
     email: "",

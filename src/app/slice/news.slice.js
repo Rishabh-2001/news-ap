@@ -39,7 +39,7 @@ export const getAllNews = createAsyncThunk("user/news", async (_, thunkAPI) => {
     //  console.log("RERER", data);
     return { data };
   } catch (err) {
-    console.log("ERR:", err);
+    // console.log("ERR:", err);
     return thunkAPI.rejectWithValue(err?.response?.data);
   }
 });
@@ -58,15 +58,15 @@ const newsSlice = createSlice({
       state.news.isLoading = true;
     });
     builder.addCase(getAllNews.fulfilled, (state, action) => {
-      console.log(
-        "Sucess fsign email/password in",
-        action?.payload?.data?.data
-      );
+      // console.log(
+      //   "Sucess fsign email/password in",
+      //   action?.payload?.data?.data
+      // );
       state.news.isLoading = false;
       state.news.newsData = action?.payload?.data?.data;
     });
     builder.addCase(getAllNews.rejected, (state, action) => {
-      console.log("rejected reaseon", action);
+      // console.log("rejected reaseon", action);
       state.news.isLoading = false;
       state.news.error = action.payload.code;
     });

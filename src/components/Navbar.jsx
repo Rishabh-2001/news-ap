@@ -31,7 +31,7 @@ const Navbar = () => {
     dispatch(listenToAuthState());
   }, []);
 
-  console.log("USER", user);
+  // console.log("USER", user);
 
   const handleSearch = () => {
     dispatch(setSearch(q));

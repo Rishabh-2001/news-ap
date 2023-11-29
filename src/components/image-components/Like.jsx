@@ -26,15 +26,15 @@ const Like = ({ news, isLoggedIn }) => {
       action: "liked"
     }
     
-    console.log("GEtting like for ", payload );
+    // console.log("GEtting like for ", payload );
       await dispatch(AddLikedSaved(payload))
       .then(res=>{
-        console.log("RES AFTER LIKING ", res);
+        // console.log("RES AFTER LIKING ", res);
         toast.success("Added to Liked Articles.")
         setSrc(fillTile)
       })
       .catch(err=>{
-        console.log("ERR after liking ", err);
+        // console.log("ERR after liking ", err);
          toast.error("Error Occured")
       })
 

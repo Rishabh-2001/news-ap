@@ -43,7 +43,7 @@ export const signInWithGoogle = createAsyncThunk(
     try {
       const result = await signInWithPopup(auth, provider);
       const user = result.user;
-      console.log("RESULLT123", result);
+      // console.log("RESULLT123", result);
 
       // Check if the user document already exists
       const userDocRef = doc(db, "users", user.uid);
@@ -51,7 +51,7 @@ export const signInWithGoogle = createAsyncThunk(
 
       if (userDocSnapshot.exists()) {
         // User document already exists, you may want to dispatch an action or perform additional logic
-        console.log("User already exists:", userDocSnapshot.data());
+        // console.log("User already exists:", userDocSnapshot.data());
       } else {
         // User document does not exist, create a new one
         await createUserDocument(user.uid, {
@@ -67,8 +67,8 @@ export const signInWithGoogle = createAsyncThunk(
         profileData: user, // Update this with the actual user profile data you need
       };
     } catch (error) {
-      console.log("Some error432", error);
-      console.error("Google Sign-In Error:", error.message);
+      // console.log("Some error432", error);
+      // console.error("Google Sign-In Error:", error.message);
       throw error;
     }
   }
@@ -82,7 +82,7 @@ const createUserDocument = async (uid, userData) => {
     // Set the user document with the provided data
     await setDoc(userRef, userData, {merge:true});
 
-    console.log("User document created successfully");
+    // console.log("User document created successfully");
   } catch (error) {
     console.error("Error creating user document:", error.message);
   }
@@ -106,9 +106,9 @@ export const signOutUser = createAsyncThunk(
 export const listenToAuthState = createAsyncThunk(
   "user/listenToAuthState",
   async (_, { dispatch }) => {
-    console.log("Auth state changes");
+    // console.log("Auth state changes");
     onAuthStateChanged(auth, (user) => {
-      console.log("Already user", user);
+      // console.log("Already user", user);
       if (user) {
         // User is signed in
         dispatch(
@@ -120,7 +120,7 @@ export const listenToAuthState = createAsyncThunk(
           })
         );
       } else {
-        console.log("Sign out feature");
+        // console.log("Sign out feature");
         // User is signed out
         dispatch(signOutUser());
       }
@@ -138,7 +138,7 @@ export const registerUser = createAsyncThunk(
         email,
         password
       );
-      console.log("Auth res", authResult);
+      // console.log("Auth res", authResult);
       const user = authResult.user;
       await createUserDocument(authResult.user.uid, {
         // Additional user data if needed
@@ -151,7 +151,7 @@ export const registerUser = createAsyncThunk(
         profileData: user, // Update this with the actual user profile data you need
       };
     } catch (error) {
-      console.log("ERR:>", error);
+      // console.log("ERR:>", error);
       return thunkAPI.rejectWithValue(error);
     }
   }
@@ -163,7 +163,7 @@ export const loginUserWithEmailPassword = createAsyncThunk(
     try {
       const { email, password } = loginData;
       const loginRes = await signInWithEmailAndPassword(auth, email, password);
-      console.log("Auth res", loginRes);
+      // console.log("Auth res", loginRes);
       const user = loginRes.user;
       return {
         userType: "user", // Set user type accordingly
@@ -171,7 +171,7 @@ export const loginUserWithEmailPassword = createAsyncThunk(
         profileData: user, // Update this with the actual user profile data you need
       };
     } catch (error) {
-      console.log("ERR:>", error.code, error.message);
+      // console.log("ERR:>", error.code, error.message);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -206,22 +206,22 @@ export const getAllLiked = createAsyncThunk(
     try{
       let { uid }=_;
       
-      console.log("HRERERE", uid);
+      // console.log("HRERERE", uid);
       const docRef = doc(db, "users", uid);
       const docSnap = await getDoc(docRef);
       
       if (docSnap.exists()) {
-        console.log("Document data:", docSnap.data());
+        // console.log("Document data:", docSnap.data());
       } else {
         // docSnap.data() will be undefined in this case
-        console.log("No such document!");
+        // console.log("No such document!");
       }
           return {data: docSnap.data()};
 
    
     }
     catch(err){
-        console.log("ERR:",err);
+        // console.log("ERR:",err);
         return thunkAPI.rejectWithValue(err?.response?.data?.error)
     }
 
@@ -236,7 +236,7 @@ export const AddLikedSaved = createAsyncThunk(
     
     try {
       const { uid, action, newsData } = postData;
-      console.log("HERE" , uid, action ,newsData);
+      // console.log("HERE" , uid, action ,newsData);
       const userRef = doc(db, "users", uid);
 
       let updateRes;
@@ -255,10 +255,10 @@ export const AddLikedSaved = createAsyncThunk(
         // Handle other action types if needed
         console.error("Invalid action type");
       }
-     console.log("UPD RES", updateRes);
+    //  console.log("UPD RES", updateRes);
       return { data: updateRes };
     } catch (err) {
-      console.log("ERR:", err);
+      // console.log("ERR:", err);
       return thunkAPI.rejectWithValue(err?.response?.data?.error);
     }
   }
@@ -287,7 +287,7 @@ const userSlice = createSlice({
     builder.addCase(signInWithGoogle.fulfilled, (state, action) => {
       setUser(state, action); // Call the setUser reducer to update the state
       state.state.isFetching = false; // Update the fetching state if needed
-      console.log("Sucess fsign in", action);
+      // console.log("Sucess fsign in", action);
 
       state.user.userType = action?.payload?.userType;
       state.user.isAuthenticated = true;
@@ -308,13 +308,13 @@ const userSlice = createSlice({
     builder.addCase(signInWithGoogle.rejected, (state, action) => {
       state.state.isLoading = false;
       state.state.error = action.error.message;
-      console.log("rejected reaseon", action);
+      // console.log("rejected reaseon", action);
     });
     // for sign up with email password
     builder.addCase(registerUser.fulfilled, (state, action) => {
       setUser(state, action); // Call the setUser reducer to update the state
       state.state.isFetching = false; // Update the fetching state if needed
-      console.log("Sucess fsign email/password in", action);
+      // console.log("Sucess fsign email/password in", action);
 
       state.user.userType = action?.payload?.userType;
       state.user.isAuthenticated = true;
@@ -334,7 +334,7 @@ const userSlice = createSlice({
     builder.addCase(loginUserWithEmailPassword.fulfilled, (state, action) => {
       setUser(state, action); // Call the setUser reducer to update the state
       state.state.isFetching = false; // Update the fetching state if needed
-      console.log("Sucess sign in  email/password in", action);
+      // console.log("Sucess sign in  email/password in", action);
 
       state.user.userType = action?.payload?.userType;
       state.user.isAuthenticated = true;
@@ -347,7 +347,7 @@ const userSlice = createSlice({
     builder.addCase(loginUserWithEmailPassword.rejected, (state, action) => {
       state.state.isLoading = false;
       state.state.error = action.payload;
-      console.log("rejected reaseon", action);
+      // console.log("rejected reaseon", action);
     });
    // sign out user action handling
     builder.addCase(signOutUser.pending, (state) => {
@@ -371,7 +371,7 @@ const userSlice = createSlice({
     builder.addCase(getAllLiked.rejected, (state, action) => {
       state.user.likedNews.isLoading = false;
       state.user.likedNews.error = action.payload;
-      console.log("rejected reaseon", action);
+      // console.log("rejected reaseon", action);
     });
     // handling the action of adding or saving news article
     builder.addCase(AddLikedSaved.pending, (state) => {
@@ -384,7 +384,7 @@ const userSlice = createSlice({
     builder.addCase(AddLikedSaved.rejected, (state, action) => {
       state.user.likedNews.isLoading = false;
       state.user.likedNews.error = action.payload;
-      console.log("rejected reaseon", action);
+      // console.log("rejected reaseon", action);
     });
 
 

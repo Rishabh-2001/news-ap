@@ -24,7 +24,7 @@ const Save = ({ news, isLoggedIn }) => {
    
       await dispatch(AddLikedSaved(payload))
       .then(res=>{
-        console.log("RES AFTER LIKING ", res);
+        // console.log("RES AFTER LIKING ", res);
         toast.success("Added to Saved Articles.")
         setSrc(fillSave)
       })

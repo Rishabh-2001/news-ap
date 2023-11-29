@@ -11,9 +11,9 @@ import {
   setUser,
   signInWithGoogle,
   signOutUser,
-} from "../app/slice/user.slice";
+} from "../slice/user.slice";
 import { deleteCookie, getCookie } from "cookies-next";
-import { setSearch } from "@/app/slice/news.slice";
+import { setSearch } from "@/slice/news.slice";
 import heart from "../../public/heart (2).png";
 import saved from "../../public/bookmark.png";
 import userdp from "../../public/user.png";

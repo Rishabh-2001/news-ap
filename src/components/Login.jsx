@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   loginUserWithEmailPassword,
   signInWithGoogle,
-} from "../app/slice/user.slice";
+} from "../slice/user.slice";
 import { toast } from "react-toastify";
 
 import Loader from "./Loader";

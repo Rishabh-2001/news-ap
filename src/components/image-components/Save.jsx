@@ -3,7 +3,7 @@ import Image from "next/image";
 import save from "../../../public/save-instagram.png";
 import fillSave from "../../../public/bookmark.png"
 import { useRouter } from "next/navigation";
-import { AddLikedSaved } from "@/app/slice/user.slice";
+import { AddLikedSaved } from "@/slice/user.slice";
 import {useDispatch, useSelector} from "react-redux"
 import {toast} from  'react-toastify'
 const Save = ({ news, isLoggedIn }) => {

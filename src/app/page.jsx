@@ -4,12 +4,12 @@ import List from "@/components/image-components/List";
 import Tile from "@/components/image-components/Tile";
 import { useEffect, useLayoutEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllNews } from "./slice/news.slice";
+import { getAllNews } from "../slice/news.slice";
 import { toast } from "react-toastify";
 import Loader from "@/components/Loader";
 import NewsTile from "@/components/NewsTile";
 import { useRouter } from "next/navigation";
-import { listenToAuthState } from "./slice/user.slice";
+import { listenToAuthState } from "../slice/user.slice";
 // import { RouterContext } from "next/dist/shared/lib/router-context.shared-runtime";
 
 export default function Home() {

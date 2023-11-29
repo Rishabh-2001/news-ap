@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { auth, db } from "../../../firebase/firebase.config";
+import { auth, db } from "../../firebase/firebase.config";
 import { doc,updateDoc, arrayUnion, getDoc, setDoc } from "firebase/firestore";
 
 import {

@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { registerUser, signInWithGoogle } from "../app/slice/user.slice";
+import { registerUser, signInWithGoogle } from "../slice/user.slice";
 import firebaseui from "firebaseui";
 // import loader from '../../../public/Spinner-3.gif'
 import google from "../../public/logo-google.svg";

@@ -4,7 +4,7 @@ import tile from "../../../public/love.png";
 import fillTile from "../../../public/heart (2).png"
 import { useRouter } from "next/navigation";
 import {useDispatch, useSelector} from "react-redux"
-import { AddLikedSaved } from "@/app/slice/user.slice";
+import { AddLikedSaved } from "@/slice/user.slice";
 import {toast} from 'react-toastify'
 
 const Like = ({ news, isLoggedIn }) => {

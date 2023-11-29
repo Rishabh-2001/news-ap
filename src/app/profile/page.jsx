@@ -5,7 +5,7 @@ import ProfileCard from "@/components/ProfileCard";
 import heart from "../../../public/heart (2).png";
 import save from "../../../public/bookmark.png";
 import { useSelector, useDispatch } from "react-redux";
-import { getAllLiked } from "../slice/user.slice";
+import { getAllLiked } from "../../slice/user.slice";
 import {toast} from "react-toastify"
 import NewsCard from "@/components/NewsCard";
 

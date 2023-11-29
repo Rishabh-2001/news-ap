@@ -1,4 +1,4 @@
-import axiosInstance from "@/axiosConfig";
+
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 const NEWS_URL = process.env.NEXT_PUBLIC_NEWS_URL;

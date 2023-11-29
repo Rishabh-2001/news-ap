@@ -1,15 +1,8 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { registerUser, signInWithGoogle } from "../slice/user.slice";
-import firebaseui from "firebaseui";
-// import loader from '../../../public/Spinner-3.gif'
 import google from "../../public/logo-google.svg";
-// import firebase from 'firebase'
-// import { StyledFirebaseAuth } from 'react-firebaseui';
-// import auth from  '../../../firebase/firebase.config.js'; // Adjust the path
-import { app, auth } from "../../firebase/firebase.config";
-// import { Spin } from "antd";
 import Image from "next/image";
 import { toast } from "react-toastify";
 import Loader from "./Loader";
@@ -17,8 +10,6 @@ import { setCookie } from "cookies-next";
 import { useRouter } from "next/navigation";
 
 const Register = () => {
-  //   const dispatch = useDispatch();
-  //   const [registerType, setRegisterType] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const dispatch = useDispatch();
 

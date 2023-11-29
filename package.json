@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.7",
+    "axios": "^1.6.2",
     "cookies-next": "^4.1.0",
     "firebase": "^10.7.0",
     "firebaseui": "^6.1.0",
